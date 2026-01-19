@@ -1,0 +1,190 @@
+# .gitignore for d288-vacation-booking
+# Spring Boot + Angular Project
+# =====================================
+
+# ==========================================
+# BACKEND (Spring Boot / Maven)
+# ==========================================
+
+# Maven build output - YOU HAVE THIS
+backend/target/
+
+# Compiled class files - YOU HAVE THESE
+*.class
+
+# Maven wrapper JAR (keep mvnw and mvnw.cmd scripts, ignore the jar)
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# Log files
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Large Files:
+**/.angular/
+*.zip
+
+# Maven
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.versionsBackup
+backend/pom.xml.next
+backend/release.properties
+backend/dependency-reduced-pom.xml
+backend/buildNumber.properties
+backend/.mvn/timing.properties
+
+# IDE - Eclipse
+backend/.apt_generated
+backend/.classpath
+backend/.factorypath
+backend/.project
+backend/.settings
+backend/.springBeans
+backend/.sts4-cache
+
+# IDE - IntelliJ IDEA
+backend/.idea
+backend/*.iws
+backend/*.iml
+backend/*.ipr
+backend/out/
+
+# IDE - NetBeans
+backend/nbproject/private/
+backend/nbbuild/
+backend/dist/
+backend/nbdist/
+backend/.nb-gradle/
+backend/build/
+
+# IDE - VS Code
+backend/.vscode/
+
+
+# ==========================================
+# FRONTEND (Angular / Node.js)
+# ==========================================
+
+# Dependencies - YOU HAVE THIS (HUGE FOLDER)
+frontend/node_modules/
+
+# Angular compiled output
+frontend/dist/
+frontend/tmp/
+frontend/out-tsc/
+frontend/bazel-out/
+
+# Angular cache and build artifacts
+frontend/.angular/
+frontend/.sass-cache/
+
+# Angular build info
+frontend/__ngcc_entry_points__.json
+
+# IDEs
+frontend/.vscode/*
+!frontend/.vscode/settings.json
+!frontend/.vscode/tasks.json
+!frontend/.vscode/launch.json
+!frontend/.vscode/extensions.json
+frontend/.history/*
+frontend/*.iml
+frontend/.idea/
+frontend/.project
+frontend/.classpath
+frontend/.c9/
+frontend/*.launch
+frontend/.settings/
+frontend/*.sublime-workspace
+
+# System Files
+frontend/.DS_Store
+frontend/Thumbs.db
+
+# NPM/Yarn
+frontend/npm-debug.log
+frontend/yarn-error.log
+frontend/lerna-debug.log
+
+# Testing
+frontend/coverage/
+frontend/.nyc_output/
+frontend/junit.xml
+
+# E2E
+frontend/e2e/*.js
+frontend/e2e/*.map
+
+
+# ==========================================
+# DATABASE
+# ==========================================
+
+# Local database files (if any)
+*.db
+*.sqlite
+*.sqlite3
+
+# Database dumps with sensitive data (keep schema files)
+# Uncomment if you have data dumps:
+# database/*_data.sql
+# database/*_dump.sql
+
+
+# ==========================================
+# GENERAL / ROOT LEVEL
+# ==========================================
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor backup files
+*~
+*.bak
+*.swp
+*.swo
+*~.nib
+
+# Temporary files
+*.tmp
+*.temp
+
+# Logs
+*.log
+
+# IDE files at root
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# ==========================================
+# OPTIONAL - UNCOMMENT IF NEEDED
+# ==========================================
+
+# If application.properties contains passwords/secrets
+# backend/src/main/resources/application.properties
+# backend/src/main/resources/application-dev.properties
+# backend/src/main/resources/application-prod.properties
+
+# If environment.ts contains API keys
+# frontend/src/environments/environment.ts
+# frontend/src/environments/environment.prod.ts
