@@ -1,4 +1,4 @@
-package edu.wgu.d288_backend.config;
+package edu.wgu.d288.backend.config;
 
 import edu.wgu.d288.backend.entities.*;
 import org.springframework.context.annotation.Configuration;
