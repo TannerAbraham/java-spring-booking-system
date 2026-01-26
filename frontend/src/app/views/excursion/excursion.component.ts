@@ -53,7 +53,9 @@ export class ExcursionComponent implements OnInit {
   }
 
   getExcursions(): Observable<Excursion[]> {
-    return this.http.get<ExcursionApiResponse>(this.vacationUrl + this.vacationId + '/excursions')
+    return this.http.get<ExcursionApiResponse>(
+      'http://localhost:8080/api/excursions/search/findByVacation_Id?id=' + this.vacationId
+    )
       .pipe(
         map(response => response._embedded.excursions)
       );
