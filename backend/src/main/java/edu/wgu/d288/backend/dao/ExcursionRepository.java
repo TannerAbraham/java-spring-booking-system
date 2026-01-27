@@ -13,5 +13,7 @@ import java.util.Set;
 public interface ExcursionRepository extends JpaRepository<Excursion, Long> {
 
     // Find excursions by vacation ID
-    Set<Excursion> findByVacation_Id(@Param("id") Long id);
+    // FIXED: Changed from findByVacation_Id to findByVacationId
+    // This correctly queries vacation.id (the id property of the vacation relationship)
+    Set<Excursion> findByVacationId(@Param("id") Long id);
 }

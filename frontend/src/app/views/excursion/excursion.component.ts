@@ -53,8 +53,9 @@ export class ExcursionComponent implements OnInit {
   }
 
   getExcursions(): Observable<Excursion[]> {
+    // FIXED: Changed from findByVacation_Id to findByVacationId
     return this.http.get<ExcursionApiResponse>(
-      'http://localhost:8080/api/excursions/search/findByVacation_Id?id=' + this.vacationId
+      'http://localhost:8080/api/excursions/search/findByVacationId?id=' + this.vacationId
     )
       .pipe(
         map(response => response._embedded.excursions)
