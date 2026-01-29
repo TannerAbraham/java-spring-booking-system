@@ -26,7 +26,7 @@ public class Excursion {
     private Double excursion_price;
 
     @Column(name = "image_url")
-    private String image_url;
+    private String image_URL;  // ✅ FIXED: Changed from image_url to image_URL
 
     @Column(name = "create_date")
     private Date create_date;

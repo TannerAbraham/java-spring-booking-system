@@ -26,10 +26,10 @@ public class Vacation {
     private String description;
 
     @Column(name = "travel_fare_price")
-    private Double travel_fare_price;
+    private Double travel_price;  // ✅ FIXED: Changed from travel_fare_price to travel_price
 
     @Column(name = "image_url")
-    private String image_url;
+    private String image_URL;
 
     @Column(name = "create_date")
     private Date create_date;
