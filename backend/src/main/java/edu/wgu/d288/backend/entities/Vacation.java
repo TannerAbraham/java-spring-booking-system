@@ -1,44 +1,52 @@
 package edu.wgu.d288.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.math.BigDecimal;
+import lombok.Getter;
+import lombok.Setter;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "vacations")
-@Data
+@Getter
+@Setter
 public class Vacation {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vacation_id")
     private Long id;
-    
+
     @Column(name = "vacation_title")
     private String vacation_title;
-    
+
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "travel_fare_price")
-    private BigDecimal travel_price;
-    
+    private Double travel_fare_price;
+
     @Column(name = "image_url")
-    private String image_URL;
-    
+    private String image_url;
+
     @Column(name = "create_date")
-    @CreationTimestamp
     private Date create_date;
-    
+
     @Column(name = "last_update")
-    @UpdateTimestamp
     private Date last_update;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vacation")
-    private Set<Excursion> excursions;
+
+    // CRITICAL FIX: @JsonIgnoreProperties prevents infinite JSON serialization loop
+    // When serializing Vacation, it will include excursions but ignore excursion.vacation
+    @OneToMany(mappedBy = "vacation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("vacation")
+    private Set<Excursion> excursions = new HashSet<>();
+
+    // Add any additional methods your project needs
+    // For example, to add excursions:
+    public void addExcursion(Excursion excursion) {
+        this.excursions.add(excursion);
+        excursion.setVacation(this);
+    }
 }

@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Set;
 
 @CrossOrigin("http://localhost:4200")
-@RepositoryRestResource(collectionResourceRel = "excursions", path = "excursions")
 public interface ExcursionRepository extends JpaRepository<Excursion, Long> {
 
-    // Find excursions by vacation ID
-    // FIXED: Changed from findByVacation_Id to findByVacationId
-    // This correctly queries vacation.id (the id property of the vacation relationship)
-    Set<Excursion> findByVacationId(@Param("id") Long id);
+    // Method name uses underscore to access nested property: vacation.id
+    // Parameter name must match what's used in the URL query string
+    Set<Excursion> findByVacation_Id(@Param("vacationId") Long vacationId);
 }

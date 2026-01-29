@@ -17,7 +17,15 @@ public class VacationController {
 
     @GetMapping("/{vacationId}/excursions")
     public Set<Excursion> getExcursionsForVacation(@PathVariable Long vacationId) {
-        // FIXED: Changed from findByVacation_Id to findByVacationId
-        return excursionRepository.findByVacationId(vacationId);
+        System.out.println("===============================================");
+        System.out.println("Fetching excursions for vacation ID: " + vacationId);
+
+        Set<Excursion> excursions = excursionRepository.findByVacation_Id(vacationId);
+
+        System.out.println("Found " + excursions.size() + " excursions");
+        excursions.forEach(e -> System.out.println("  - " + e.getExcursion_title()));
+        System.out.println("===============================================");
+
+        return excursions;
     }
 }
