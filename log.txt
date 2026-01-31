@@ -1,0 +1,119 @@
+commit 7856b59ea7376d80a8bcfc1bbd4696f5304ae9ac
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Sat Jan 31 05:05:20 2026 -0500
+
+    Part J: Verify checkout functionality with database persistence - application tested successfully with order placement, screenshots captured showing no network errors and database persistence verified
+
+commit 29fca9ef03aabac0bed6382a078209da2628cec3
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Fri Jan 30 16:52:00 2026 -0500
+
+    Fixed order tracking numbeer display
+
+commit 21b210f551879de2fea770e0bd502d2241ab2555
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Wed Jan 28 22:28:12 2026 -0500
+
+    Resolved image and excursions not displaying
+
+commit 1efa7b05b25bc0b0e8bc43ab78ebffb35cf54291
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Wed Jan 28 20:38:58 2026 -0500
+
+    Fixed excursions error
+
+commit eee34eb7088c98f6538a196366d54ce9d6c1b456
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Mon Jan 26 19:23:38 2026 -0500
+
+    Updated 3 files
+
+commit 959c5d50506c5418a1d57eb1b91f2269a0b3d234
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Mon Jan 26 16:45:47 2026 -0500
+
+    VacationController Test
+
+commit afbf05193e9ba4112a3e5a5234738870e25464ec
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Mon Jan 26 16:40:01 2026 -0500
+
+    Updated VacationController
+
+commit 11650638000d540ae7e8c778f19a4d7764cabb67
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Sun Jan 25 18:39:54 2026 -0500
+
+    Added VacationController.java
+
+commit d73d1a972afed863351c01ccfca1f81eacdaecee
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Sun Jan 25 18:26:40 2026 -0500
+
+    Updated ExcursionsRepository.java
+
+commit c2b3329d2926f450bbb4fe0874fe2a51920a82c9
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Sun Jan 25 16:36:36 2026 -0500
+
+    Fixed typo in config file
+
+commit a80c2c7dbcc2e998d56374ad32af69da62e6118d
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Sun Jan 25 16:24:37 2026 -0500
+
+    Restructured directories
+
+commit ea8baf17838b1855b11a9242cff02c73ae374697
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Fri Jan 23 23:53:08 2026 -0500
+
+    Part I: Added DataLoader to programmatically insert 5 sample customers
+
+commit 4d3bb4cbcc04c3134f19536fb9e045c5c095ad4b
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Fri Jan 23 23:50:04 2026 -0500
+
+    Part H: Created CheckoutController with POST mapping
+
+commit 3a97195f923a67c7b1b5e7e8021afbeaae7560ae
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Fri Jan 23 23:45:43 2026 -0500
+
+    Part G: Added validation annotations to Customer entity
+
+commit 65c434f4137d85dbe1335f5ba64545297bd7fb65
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Thu Jan 22 09:54:45 2026 -0500
+
+    Part F: Created services package with Purchase, PurchaseResponse, and CheckoutService
+
+commit 5409194939f4d773c2fee61638688756dd941c73
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Thu Jan 22 09:47:51 2026 -0500
+
+    Part E: Created repository interfaces with cross-origin support
+
+commit 5f8ac0fdf02ae273c474ec2a7fe98c724027d39d
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Thu Jan 22 08:41:55 2026 -0500
+
+    Part D: Created all entity classes matching UML diagram
+
+commit 1019f69b89f774940caadeeb1e3e547a8be44f04
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Thu Jan 22 08:05:36 2026 -0500
+
+    Part C: Created packages - controllers, entities, dao, services, config
+
+commit cedd43e1c8467819a43fb76495304a6ed017ce68
+Author: Tanner Abraham <tabra99@wgu.edu>
+Date:   Mon Jan 19 09:30:40 2026 -0500
+
+    Moved sql files from frontend to database folder
+
+commit 7ec152872b2d6c13ba050dbe4775192b10b68652
+Author: Tanner Abraham <tannersuccess@gmail.com>
+Date:   Mon Jan 19 07:51:47 2026 -0500
+
+    Initial commit
