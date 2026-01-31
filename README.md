@@ -1,0 +1,322 @@
+# D288 Back-End Programming - Vacation Booking System
+
+**WGU Course:** D288 - Back-End Programming  
+**Student:** Tanner Abraham  
+**Project:** Spring Boot REST API for Travel Agency Vacation Bookings
+
+---
+
+## Project Overview
+
+This project is a Spring Boot back-end application developed to replace a legacy vacation booking system for a travel agency. The application provides RESTful API endpoints for managing customers, vacations, excursions, and cart/checkout functionality.
+
+The back-end integrates with an existing Angular front-end and MySQL database to create a complete vacation booking solution.
+
+---
+
+## Technologies Used
+
+- **Java 17**
+- **Spring Boot 2.7.x**
+- **Spring Data JPA** - Database integration
+- **Spring Data REST** - RESTful API exposure
+- **MySQL 8.0** - Relational database
+- **Lombok** - Boilerplate code reduction
+- **Maven** - Dependency management
+- **Angular** (Front-end - unmodified)
+
+---
+
+## Project Structure
+
+```
+backend/
+├── src/
+│   └── main/
+│       ├── java/edu/wgu/d288/backend/
+│       │   ├── config/
+│       │   │   └── RestDataConfig.java
+│       │   ├── controllers/
+│       │   │   └── CheckoutController.java
+│       │   ├── dao/
+│       │   │   ├── CartItemRepository.java
+│       │   │   ├── CartRepository.java
+│       │   │   ├── CountryRepository.java
+│       │   │   ├── CustomerRepository.java
+│       │   │   ├── DivisionRepository.java
+│       │   │   ├── ExcursionRepository.java
+│       │   │   └── VacationRepository.java
+│       │   ├── entities/
+│       │   │   ├── Cart.java
+│       │   │   ├── CartItem.java
+│       │   │   ├── Country.java
+│       │   │   ├── Customer.java
+│       │   │   ├── Division.java
+│       │   │   ├── Excursion.java
+│       │   │   ├── StatusType.java (enum)
+│       │   │   └── Vacation.java
+│       │   └── services/
+│       │       ├── CheckoutService.java
+│       │       ├── CheckoutServiceImpl.java
+│       │       ├── Purchase.java
+│       │       └── PurchaseResponse.java
+│       └── resources/
+│           └── application.properties
+└── pom.xml
+```
+
+---
+
+## Database Schema
+
+The application uses the following main tables:
+
+- **customers** - Customer information
+- **countries** - Country reference data
+- **divisions** - State/province reference data
+- **vacations** - Vacation packages
+- **excursions** - Available excursion activities
+- **carts** - Shopping cart/orders
+- **cart_items** - Vacation items in cart
+- **excursion_cartitem** - Join table for excursions in cart items
+
+---
+
+## Key Features Implemented
+
+### ✅ Part A: Spring Initializr Setup
+- Spring Data JPA
+- Spring Data REST
+- MySQL Driver
+- Lombok
+
+### ✅ Part C: Package Structure
+- `config` - REST configuration
+- `controllers` - REST controllers
+- `dao` - Repository interfaces
+- `entities` - JPA entity classes
+- `services` - Business logic
+
+### ✅ Part D: Entity Classes
+All entities match the provided UML diagram:
+- Customer, Country, Division
+- Vacation, Excursion
+- Cart, CartItem
+- StatusType enum (pending, ordered, canceled)
+
+### ✅ Part E: Repository Interfaces
+- All repositories extend JpaRepository
+- Cross-origin support enabled (`@CrossOrigin`)
+- Custom query methods where needed
+
+### ✅ Part F: Services Package
+- `Purchase` - Data transfer object for checkout
+- `PurchaseResponse` - Order confirmation with tracking number
+- `CheckoutService` - Service interface
+- `CheckoutServiceImpl` - Transaction handling and order processing
+
+### ✅ Part G: Validation
+- Customer input validation
+- Phone number format validation
+- Required field enforcement
+- Postal code validation
+
+### ✅ Part H: Checkout Controller
+- `POST /api/checkout/purchase` endpoint
+- Order processing with UUID tracking numbers
+- Transaction management
+- Error handling
+
+### ✅ Part I: Sample Data
+- Five sample customers programmatically added
+- Data persistence with duplicate prevention
+
+### ✅ Part J: Integration Testing
+- Successful order placement through Angular front-end
+- Database persistence verified
+- No network errors during checkout
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+- Java 17 or higher
+- MySQL 8.0
+- Maven 3.6+
+- Angular front-end (provided in lab environment)
+
+### Database Setup
+
+1. Create the database:
+```sql
+CREATE DATABASE full-stack-ecommerce;
+```
+
+2. Update `application.properties` with your MySQL credentials:
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/full-stack-ecommerce
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+```
+
+3. Run the provided SQL scripts to create tables and seed data
+
+### Running the Application
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd backend
+```
+
+2. Build the project:
+```bash
+mvn clean install
+```
+
+3. Run the Spring Boot application:
+```bash
+mvn spring-boot:run
+```
+
+4. The API will be available at: `http://localhost:8080`
+
+5. Start the Angular front-end (runs on port 4200)
+
+---
+
+## API Endpoints
+
+### REST Repositories (Auto-generated by Spring Data REST)
+
+- `GET /api/customers` - List all customers
+- `GET /api/customers/{id}` - Get customer by ID
+- `GET /api/vacations` - List all vacations
+- `GET /api/excursions` - List all excursions
+- `GET /api/carts` - List all carts
+- `GET /api/countries` - List all countries
+- `GET /api/divisions` - List all divisions
+
+### Custom Endpoints
+
+- `POST /api/checkout/purchase` - Place an order
+  - **Request Body:** Purchase object (customer + cart)
+  - **Response:** PurchaseResponse with order tracking number
+
+---
+
+## Testing the Checkout Process
+
+1. Navigate to the Angular front-end (`http://localhost:4200`)
+2. Select a vacation package
+3. Add two excursions
+4. Fill out customer information
+5. Complete checkout
+6. Verify order tracking number is displayed
+7. Check database for persisted data
+
+### Verify Database Persistence
+
+```sql
+-- Check cart was created
+SELECT * FROM carts WHERE order_tracking_number = '<your-tracking-number>';
+
+-- Check cart items
+SELECT ci.*, v.vacation_title 
+FROM cart_items ci 
+JOIN vacations v ON ci.vacation_id = v.vacation_id
+WHERE ci.cart_id = <cart-id>;
+
+-- Check excursions
+SELECT ec.*, e.excursion_title 
+FROM excursion_cartitem ec 
+JOIN excursions e ON ec.excursion_id = e.excursion_id
+WHERE ec.cart_item_id IN (SELECT cart_item_id FROM cart_items WHERE cart_id = <cart-id>);
+```
+
+---
+
+## Critical Bug Fixes
+
+### Database Persistence Issue (Resolved)
+**Problem:** Orders were receiving 200 OK responses but not persisting to the database with tracking numbers.
+
+**Root Cause:** The checkout service was incorrectly saving the customer DTO instead of creating a new cart entity.
+
+**Solution:** Implemented proper cart creation logic in `CheckoutServiceImpl`:
+- Fetch existing customer from database
+- Create new Cart object (not using DTO)
+- Generate UUID tracking number
+- Set status to `ordered`
+- Associate cart items and excursions
+- Save cart with cascade operations
+
+---
+
+## Development Notes
+
+### Sample Customers
+Five sample customers are added on application startup:
+1. John Smith
+2. Jane Doe
+3. Michael Johnson
+4. Emily Brown
+5. David Wilson
+
+The `Bootstrap` class checks for existing data to prevent duplicates.
+
+### Transaction Management
+The `CheckoutServiceImpl` uses `@Transactional` to ensure atomic operations:
+- Customer validation
+- Cart creation
+- Cart item association
+- Excursion association
+- Database persistence
+
+---
+
+## Troubleshooting
+
+### Application won't start
+- Verify MySQL is running
+- Check database credentials in `application.properties`
+- Ensure database schema exists
+
+### Orders not persisting
+- Check for validation errors in logs
+- Verify customer information is complete
+- Ensure cart contains at least one vacation
+
+### CORS errors
+- Verify `@CrossOrigin` annotations on repositories
+- Check Angular front-end is running on port 4200
+
+---
+
+## GitLab Commits
+
+This project includes commits for each major milestone:
+- ✅ Initial Spring Boot project setup
+- ✅ Package structure creation
+- ✅ Entity classes implementation
+- ✅ Repository interfaces
+- ✅ Services package
+- ✅ Validation implementation
+- ✅ Checkout controller
+- ✅ Sample customers
+- ✅ Bug fixes and testing
+
+---
+
+## Contact
+
+**Student:** Tanner Abraham  
+**Course:** WGU D288 - Back-End Programming  
+**Submission Date:** January 2026
+
+---
+
+## License
+
+This project is submitted as coursework for Western Governors University and is not licensed for external use.
